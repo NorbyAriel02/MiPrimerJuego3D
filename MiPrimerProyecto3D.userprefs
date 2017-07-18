@@ -2,8 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\car\cameraConttroller.cs">
     <Files>
-      <File FileName="Assets\scripts\car\cameraConttroller.cs" Line="33" Column="121" />
-      <File FileName="..\..\_miPrimerProyecto2D\MiPrimerProyecto2D\Assets\Scripts\Enemies\EnemyRound.cs" Line="43" Column="3" />
+      <File FileName="Assets\scripts\car\cameraConttroller.cs" Line="94" Column="74" />
+      <File FileName="..\..\_miPrimerProyecto2D\MiPrimerProyecto2D\Assets\Scripts\Enemies\EnemyRound.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
