@@ -13,19 +13,21 @@ public class GunController : MonoBehaviour {
 	void Update () {
 		if (Input.GetButtonDown("Fire1"))
 		{
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			if (Physics.Raycast (ray))
-				Debug.DrawRay (transform.position, transform.forward);
+			shoot ();
 		}
 	}
 
 	void shoot()
 	{
-		if (Input.GetButtonDown("Fire1"))
-		{
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			if (Physics.Raycast (ray))
-				Debug.DrawRay (transform.position, transform.forward);
-		}
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hit;
+
+		if (Physics.Raycast(ray, out hit, 350))
+			Debug.DrawLine(ray.origin, hit.point);
+		
+
+		if (hit.transform.tag == "Explosive")
+			hit.transform.GetComponent<BarrelExplosion> ().active = true;
+			
 	}
 }

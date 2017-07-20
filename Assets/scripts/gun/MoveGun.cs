@@ -3,27 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveGun : MonoBehaviour {
-	public Transform sigh;
-	Camera thisCamera;
-
+	public Transform sight;
 	void Awake()
 	{
-		thisCamera = Camera.main;
+		
 	}
 
-	void Update()
+	void FixedUpdate()
 	{
-		Vector3 mousePos = Input.mousePosition;
-
-		Vector3 mouseWorld = thisCamera.ScreenToWorldPoint(mousePos);
 		//Mathf.Clamp ();
-		Vector3 newLookAt = new Vector3(sigh.position.x, transform.position.y, sigh.position.z);
-
+		Vector3 newLookAt = new Vector3(sight.position.x, transform.position.y, sight.position.z);
 		transform.LookAt (newLookAt);
-		//Quaternion.Euler (sigh.position);
-
-		//transform.rotation = Quaternion.FromToRotation (transform.position, sigh.position);
-		//transform.rotation = Quaternion.LookRotation(sigh.position);
 	}
-
 }

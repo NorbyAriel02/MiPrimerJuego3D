@@ -91,7 +91,7 @@ public class cameraConttroller : MonoBehaviour {
 		}
 
 		// camera position moves towards target position:
-		transform.position = Vector3.Lerp(transform.position, m_Target.position, deltaTime*m_MoveSpeed);
+		transform.position = Vector3.Lerp(transform.position, m_Target.position+TargetDistance, deltaTime*m_MoveSpeed);
 
 		// camera's rotation is split into two parts, which can have independend speed settings:
 		// rotating towards the target's forward direction (which encompasses its 'yaw' and 'pitch')

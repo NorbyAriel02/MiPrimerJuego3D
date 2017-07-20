@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class prueba : MonoBehaviour {
+public class MoveSight : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -10,7 +10,7 @@ public class prueba : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		Vector3 mousePos = Input.mousePosition;
 		mousePos.z = mousePos.z + 10;
 		// le estoy mandando  = 10 a la funcion
