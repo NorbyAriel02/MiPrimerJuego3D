@@ -12,7 +12,7 @@ public class MoveSight : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		Vector3 mousePos = Input.mousePosition;
-		mousePos.z = mousePos.z + 10;
+		mousePos.z = mousePos.z + 30;
 		// le estoy mandando  = 10 a la funcion
 
 		transform.position = Camera.main.ScreenToWorldPoint(mousePos);

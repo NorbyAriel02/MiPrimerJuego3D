@@ -13,6 +13,7 @@ public class myCarController : MonoBehaviour {
 	private float brake;
 	private float wheelTurn;
 	private WheelCollider[] wheelsCollider;
+	private float time;
 	// Use this for initialization
 	void Start () {
 		seting ();
@@ -24,10 +25,21 @@ public class myCarController : MonoBehaviour {
 		for (int x = 0; x < wheels.Length; x++) {
 			wheelsCollider [x] = getCollider (x);
 		}
+		time = -5;
 	}
 	// Update is called once per frame
 	void FixedUpdate () {
 		//Debug.Log (rbCar.velocity.magnitude);
+		time += Time.deltaTime;
+		if (time <= 0.0f)
+			return;
+		
+		CarController ();
+
+	}
+
+	void CarController()
+	{
 		try
 		{
 			if(Input.GetKeyDown(KeyCode.O))
@@ -37,7 +49,7 @@ public class myCarController : MonoBehaviour {
 				MaxTurn = 15;
 			else
 				MaxTurn = 5;
-			
+
 			instateatePower = Input.GetAxis ("Vertical") * motorPower * Time.deltaTime;
 			wheelTurn = Input.GetAxis ("Horizontal") * MaxTurn;
 			brake = Input.GetKey (KeyCode.Space) ? rbCar.mass * 0.1f : 0.0f;
@@ -75,8 +87,6 @@ public class myCarController : MonoBehaviour {
 		catch(Exception ex) {
 			Debug.Log (ex);
 		}
-
-
 	}
 
 	Vector3 turnWheel(int n)
@@ -94,4 +104,20 @@ public class myCarController : MonoBehaviour {
 		if (col.transform.tag == "Explosive")
 			col.transform.GetComponent<BarrelExplosion> ().active = true;
 	}
+
+	public float GetVel()
+	{
+		return rbCar.velocity.magnitude;
+	}
+
+	public float GetTime()
+	{
+		return time;
+	}
+
+	public void Finished()
+	{
+		time = -5;
+	}
+
 }

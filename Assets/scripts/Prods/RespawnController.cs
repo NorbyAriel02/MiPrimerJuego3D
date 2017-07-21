@@ -23,7 +23,6 @@ public class RespawnController : MonoBehaviour {
 	{
 		car.position = ListRespawn [n].position;
 		car.rotation = rotationCar;
-		Debug.Log ("Spawneo en "  + GetSpawnActive());
 	}
 
 	public int GetSpawnActive()
@@ -37,7 +36,5 @@ public class RespawnController : MonoBehaviour {
 		//llega al final
 		if (spawnActive > ListRespawn.Length - 1)
 			spawnActive = 0;
-
-
 	}
 }

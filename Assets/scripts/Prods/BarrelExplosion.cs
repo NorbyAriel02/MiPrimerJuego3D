@@ -38,7 +38,7 @@ public class BarrelExplosion : MonoBehaviour {
 			if (rb == null)
 				continue;
 			
-			if (rb.tag == "Explosive" && rb.name != this.name)
+			if (rb.tag == "Explosive" && rb.GetInstanceID() != this.GetInstanceID())
 				rb.GetComponent<BarrelExplosion> ().active = true;
 			
 			rb.AddExplosionForce(power, explosionPos, radius, 3.0F);

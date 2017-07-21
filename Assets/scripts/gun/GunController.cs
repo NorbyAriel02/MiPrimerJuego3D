@@ -22,12 +22,11 @@ public class GunController : MonoBehaviour {
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 
-		if (Physics.Raycast(ray, out hit, 350))
-			Debug.DrawLine(ray.origin, hit.point);
-		
+		if (Physics.Raycast (ray, out hit, 350)) {
+			//Debug.DrawLine (ray.origin, hit.point);	
 
-		if (hit.transform.tag == "Explosive")
-			hit.transform.GetComponent<BarrelExplosion> ().active = true;
-			
+			if (hit.transform.tag == "Explosive")
+				hit.transform.GetComponent<BarrelExplosion> ().active = true;
+		}
 	}
 }

@@ -18,7 +18,6 @@ public class SpawnCollider : MonoBehaviour {
 	{
 		if (other.tag == "Player") {
 			controller.next ();
-			Debug.Log ("Paso por "  + controller.GetSpawnActive());
 		}
 	}
 }
