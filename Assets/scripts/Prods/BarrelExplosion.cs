@@ -29,6 +29,7 @@ public class BarrelExplosion : MonoBehaviour {
 	void explosion()
 	{
 		Instantiate (FXExplosion, transform.position, Quaternion.identity);
+
 		Vector3 explosionPos = transform.position;
 		Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);
 		foreach (Collider hit in colliders)

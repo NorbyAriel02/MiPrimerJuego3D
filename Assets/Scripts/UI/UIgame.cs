@@ -10,7 +10,10 @@ public class UIgame : MonoBehaviour {
 	public Text textInicial;
 	public Text textPlayerName;
 	public Button btnContinue;
+	public Button btnGoBack;
+	public Button btnExit;
 	public GameObject goBtnContinue;
+	public GameObject PanelMenu;
 	private myCarController car;
 	private float delay;
 	private bool end;
@@ -20,19 +23,44 @@ public class UIgame : MonoBehaviour {
 		end = false;
 		car = GameObject.FindGameObjectWithTag ("Player").GetComponent<myCarController> ();
 		btnContinue.onClick.AddListener(Continue);
+		btnExit.onClick.AddListener (Exit);
+		btnGoBack.onClick.AddListener (goBack);
+		PanelMenu.SetActive (false);
 		Cursor.visible = false;
 		textPlayerName.text = PlayerPrefs.GetString ("PlayerName");
 		Time.timeScale = 1.0f;
+
 	}
 
 
 	void Continue()
 	{
+		PanelMenu.SetActive (false);
 		SceneManager.LoadScene ("Records");
+	}
+
+	void goBack()
+	{
+		PanelMenu.SetActive (false);
+		Cursor.visible = false;
+		Time.timeScale = 1.0f;
+	}
+
+	void Exit()
+	{
+		SceneManager.LoadScene ("Menu");
 	}
 
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			PanelMenu.SetActive (true);
+			Time.timeScale = 0.0f;
+			Cursor.visible = true;
+		}
+
+
+
 		if (end)
 			return;
 		//apago el texto inicial luego de que arranca la carrera

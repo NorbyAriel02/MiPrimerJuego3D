@@ -9,7 +9,7 @@ public class FinishController : MonoBehaviour {
 	public Text textTime;
 	public Text textInicial;
 
-	private myCarController car;
+	//private myCarController car;
 	private float delay;
 	private bool end;
 	private bool onlyOne = true;
@@ -17,7 +17,7 @@ public class FinishController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		delay = 2;
-		car = GameObject.FindGameObjectWithTag ("Player").GetComponent<myCarController> ();
+		//car = GameObject.FindGameObjectWithTag ("Player").GetComponent<myCarController> ();
 		end = false;
 		ui = GameObject.Find ("CanvasUI").GetComponent<UIgame> ();
 	}

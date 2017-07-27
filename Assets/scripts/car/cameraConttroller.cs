@@ -12,6 +12,7 @@ public class cameraConttroller : MonoBehaviour {
 	[SerializeField] private float m_TargetVelocityLowerLimit = 4f;// the minimum velocity above which the camera turns towards the object's velocity. Below this we use the object's forward direction.
 	[SerializeField] private float m_SmoothTurnTime = 0.2f; // the smoothing for the camera's rotation
 	public Transform m_Target;
+	public Transform CarTranform;
 	public Rigidbody targetRigidbody;
 	public Vector3 TargetDistance;
 
@@ -89,9 +90,9 @@ public class cameraConttroller : MonoBehaviour {
 			}
 			m_LastFlatAngle = currentFlatAngle;
 		}
-
+		Vector3 newpos = new Vector3 (m_Target.position.x, Mathf.Clamp (m_Target.position.y, CarTranform.position.y + 1, CarTranform.position.y + 10), m_Target.position.z);
 		// camera position moves towards target position:
-		transform.position = Vector3.Lerp(transform.position, m_Target.position+TargetDistance, deltaTime*m_MoveSpeed);
+		transform.position = Vector3.Lerp(transform.position, newpos, deltaTime*m_MoveSpeed);
 
 		// camera's rotation is split into two parts, which can have independend speed settings:
 		// rotating towards the target's forward direction (which encompasses its 'yaw' and 'pitch')

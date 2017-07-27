@@ -23,6 +23,8 @@ public class Reset : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player") {
 			rbCar.velocity = Vector3.zero;
+			//rbCar.angularDrag = 0;
+			rbCar.angularVelocity = Vector3.zero;
 			other.transform.position = pos;
 			other.transform.rotation = rot;
 		} else {

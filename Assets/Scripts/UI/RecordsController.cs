@@ -1,41 +1,53 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+public class Records: IComparable<Records>
+{
+	public string nombre;
+	public float tiempo;
+
+	public int CompareTo(Records obj)
+	{
+		/*Si es mayor return 1, sino -1 y si iguales 0*/
+		return this.tiempo.CompareTo (obj.tiempo);
+	}
+}
+
+
 public class RecordsController : MonoBehaviour {
 	public Text[] Nombres;
-	public Text[] Puntos;
+	public Text[] Tiempos;
 	public Button btnDone;
 	void Awake()
 	{
 		//PlayerPrefs.DeleteAll ();
-		string[] nombres = { "","","","","","","","","",""};
-		string[] puntos = { "","","","","","","","","",""};
-		int index = 0;
 		if (PlayerPrefs.HasKey ("Records")) {
-			string[]  datos = PlayerPrefs.GetString ("Records").Split ('|');
-			List<string> records = new List<string> ();
-			foreach (string s in datos) {
-				if(s != "")
-					records.Add (s);
+			string[]  registros = PlayerPrefs.GetString ("Records").Split ('|');
+			List<Records> records = new List<Records> ();
+			foreach (string datos in registros) {
+				if (datos != "") {
+					string[] tiempo_y_nombre = datos.Split ('&');
+					Records player = new Records ();
+					player.tiempo = Convert.ToSingle(tiempo_y_nombre [0].Trim ());
+					player.nombre = tiempo_y_nombre [1].Trim();
+					records.Add (player);
+				}
+
 			}
 			records.Sort ();
-			foreach (string dato in records) {
-				string[] row = dato.Split ('&');
-				puntos [index] = row [0];
-				nombres [index] = row [1];
-				index++;
-
+			int index = 0;
+			foreach (Records record in records) {
 				if (index >= 10)
 					break;
-			}
-		}
 
-		for (int x = 0; x < puntos.Length; x++) {
-			Nombres [x].text = nombres [x];
-			Puntos [x].text = puntos [x];
+				Nombres [index].text = record.nombre;
+				Tiempos [index].text = record.tiempo.ToString();
+				index++;
+			}
 		}
 
 		btnDone.onClick.AddListener (Done);

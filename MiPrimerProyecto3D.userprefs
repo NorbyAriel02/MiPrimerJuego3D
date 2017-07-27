@@ -1,12 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\UI\UIgame.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\car\CamChangeController.cs">
     <Files>
-      <File FileName="Assets\Scripts\UI\RecordsController.cs" Line="13" Column="5" />
-      <File FileName="Assets\Scripts\UI\PreMenuController.cs" Line="14" Column="13" />
-      <File FileName="Assets\Scripts\Prods\FinishController.cs" Line="33" Column="4" />
-      <File FileName="Assets\Scripts\UI\UIgame.cs" Line="25" Column="21" />
-      <File FileName="Assets\Scripts\car\myCarController.cs" Line="115" Column="14" />
+      <File FileName="Assets\Scripts\car\CamChangeController.cs" Line="20" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

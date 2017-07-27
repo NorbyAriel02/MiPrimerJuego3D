@@ -7,9 +7,11 @@ public class RespawnController : MonoBehaviour {
 	public Transform[] ListRespawn;
 	private int spawnActive = 0;
 	private Quaternion rotationCar;
+	private Rigidbody rbCar;
 	// Use this for initialization
 	void Start () {
 		rotationCar = car.rotation;
+		rbCar = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody> ();
 	}
 	
 	// Update is called once per frame
@@ -21,6 +23,9 @@ public class RespawnController : MonoBehaviour {
 
 	public void CarRespawn(int n)
 	{
+		rbCar.velocity = new Vector3(0, 0, rbCar.velocity.z);
+
+		rbCar.angularVelocity = Vector3.zero;
 		car.position = ListRespawn [n].position;
 		car.rotation = rotationCar;
 	}
