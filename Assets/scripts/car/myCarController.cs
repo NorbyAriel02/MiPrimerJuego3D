@@ -102,7 +102,7 @@ public class myCarController : MonoBehaviour {
 	void OnCollisionEnter(Collision col)
 	{
 		if (col.transform.tag == "Explosive")
-			col.transform.GetComponent<BarrelExplosion> ().active = true;
+			col.transform.GetComponent<BarrelExplosion> ().explosion ();
 	}
 
 	public float GetVel()

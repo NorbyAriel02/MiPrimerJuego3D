@@ -3,22 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BarrelExplosion : MonoBehaviour {
-	public GameObject FXExplosion;
-
 	public float radius = 5.0F;
 	public float power = 10.0F;
-	public bool active = false;
-	void Start () {
-		
-	}
 
-	// Update is called once per frame
-	void Update () {
-		//se activa desde el script de la ametralladora
-		if (active) {
-			active = false;
-			explosion ();
-		}
+	public bool alreadyExploted = false;
+	public  int resitencia = 10;
+	private SystemParticleController FXController;
+	private Vector3 FxPosition;
+	void Start()
+	{
+		FXController = GameObject.Find ("FXController").GetComponent<SystemParticleController> ();
+
 	}
 
 	void OnCollisionEnter(Collision col)
@@ -26,9 +21,25 @@ public class BarrelExplosion : MonoBehaviour {
 		
 	}
 
-	void explosion()
+	public void explosion()
 	{
-		Instantiate (FXExplosion, transform.position, Quaternion.identity);
+		if (alreadyExploted)
+			return;
+
+		resitencia--;
+		if (resitencia > 0)
+			return;
+
+		alreadyExploted = true;
+
+		FxPosition = new Vector3 (transform.position.x, transform.position.y + 1, transform.position.z);
+
+		ParticleSystem fx = FXController.GetFxExplosion (FxPosition, Quaternion.identity);
+
+		if (fx == null)
+			return;
+		
+		fx.gameObject.SetActive (true);
 
 		Vector3 explosionPos = transform.position;
 		Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);
@@ -39,11 +50,13 @@ public class BarrelExplosion : MonoBehaviour {
 			if (rb == null)
 				continue;
 			
-			if (rb.tag == "Explosive" && rb.GetInstanceID() != this.GetInstanceID())
-				rb.GetComponent<BarrelExplosion> ().active = true;
+			if (rb.tag == "Explosive" && rb.GetInstanceID () != this.GetInstanceID ())
+				rb.GetComponent<BarrelExplosion> ().explosion ();
 			
 			rb.AddExplosionForce(power, explosionPos, radius, 3.0F);
 		}
-		Destroy (gameObject);
+
+		//Destroy (gameObject);
+		gameObject.SetActive(false);
 	}
 }

@@ -57,7 +57,7 @@ public class GunController : MonoBehaviour {
 			}
 
 			if (hit.transform.tag == "Explosive") {				
-				hit.transform.GetComponent<BarrelExplosion> ().active = true;
+				hit.transform.GetComponent<BarrelExplosion> ().explosion ();
 			}
 		}
 		else

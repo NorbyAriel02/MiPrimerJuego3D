@@ -28,7 +28,7 @@ public class Reset : MonoBehaviour {
 			other.transform.position = pos;
 			other.transform.rotation = rot;
 		} else {
-			Destroy (other.gameObject);
+			other.gameObject.SetActive (false);
 		}
 	}
 }

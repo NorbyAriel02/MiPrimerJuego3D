@@ -54,7 +54,14 @@
      <Compile Include="Assets\Scripts\Audio\CarAudioMenu.cs" />
      <Compile Include="Assets\Scripts\Audio\MusicController.cs" />
      <Compile Include="Assets\Scripts\Clase27\NavMeshEjercicio.cs" />
+     <Compile Include="Assets\Scripts\Clase30\MoveSphera.cs" />
+     <Compile Include="Assets\Scripts\Environment\CallRoadController.cs" />
+     <Compile Include="Assets\Scripts\Environment\RoadController.cs" />
+     <Compile Include="Assets\Scripts\Environment\SpawnBarrels.cs" />
+     <Compile Include="Assets\Scripts\FX\FXdisable.cs" />
+     <Compile Include="Assets\Scripts\FX\SystemParticleController.cs" />
      <Compile Include="Assets\Scripts\Prods\BarrelExplosion.cs" />
+     <Compile Include="Assets\Scripts\Prods\BarrelObjectController.cs" />
      <Compile Include="Assets\Scripts\Prods\DestroyObject.cs" />
      <Compile Include="Assets\Scripts\Prods\DropBarrelMenu.cs" />
      <Compile Include="Assets\Scripts\Prods\FinishController.cs" />
